@@ -27,6 +27,7 @@ router.post(
 		const { mongodb_url } = req.body
 		const { c1 } = req.params
 		const { c2 } = req.query
+		if (!mongodb_url || !c1 || !c2) throw "missing parameters"
 
 		var response = await devices.getDeviceLocations(mongodb_url, c1, c2)
 
@@ -43,6 +44,7 @@ router.post(
 	"/get_coordinates",
 	handle(async (req, res) => {
 		var { addresses } = req.body
+		if (!addresses) throw "missing parameters"
 		var response = await locations.getCoordinates(addresses)
 		res.send(response)
 	})
