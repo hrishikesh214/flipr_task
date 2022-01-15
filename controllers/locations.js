@@ -1,5 +1,9 @@
 import axios from "axios"
 
+/**
+ * @param {Array<String>} addresses addresses to be geocoded
+ * @returns {Array<Object>} coordinates of given addresses
+ */
 export const getCoordinates = async (addresses) => {
 	return await Promise.all(
 		addresses.map(async (addr) => {
@@ -11,6 +15,10 @@ export const getCoordinates = async (addresses) => {
 	)
 }
 
+/**
+ * @param {String} address address to be geocoded
+ * @returns {Array} coordinates of given address
+ */
 async function getCoordinatesFromAddress(address) {
 	const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GOOGLE_GEOCODE_API_KEY}`
 	const response = await axios.get(url)
