@@ -17,13 +17,20 @@ export const getDeviceLocations = async (mongodb_url, c1, c2) => {
 	const db = client.db("__CONCOX__")
 
 	// getting latest 30 devices
-	const devices = await db
+	var devices = await db
 		.collection(c1)
 		.find()
 		.sort({ createdAt: -1 })
 		.limit(30)
 		.project({ _id: 0, id: 1 })
 		.toArray()
+
+	/**
+	 * * Note
+	 * status collection only contains data for device id = '5275'
+	 * so i am hardcoding, adding '5275' to the array
+	 */
+	devices.push({ id: "5275" })
 
 	var statuses = {} // for storing latest 50 locations for device.id as keys
 
