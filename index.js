@@ -17,6 +17,10 @@ app.use((req, res, next) => {
 	next()
 })
 
+app.get("/", (req, res) => {
+	res.send({ hello: "world" })
+})
+
 // lets add all routes
 app.use("/api", solution)
 
