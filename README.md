@@ -6,7 +6,15 @@
 
 Endpoints:
 
+```
+BASE URL : https://hrishikesh-flipr-task.herokuapp.com
+```
+
 1. post point for getting latest 30 devices' latest 50 location
+
+```http
+POST /api/latest_locations
+```
 
 **response in format**
 
@@ -19,7 +27,12 @@ Endpoints:
 ```
 
 2. post point for getting coordinates of posted array of addresses using google geocoding api
-   **response in format**
+
+```http
+POST /api/get_coordinates/
+```
+
+**response in format**
 
 ```json
 [
